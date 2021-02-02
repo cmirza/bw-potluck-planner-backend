@@ -4,8 +4,6 @@ const helmet = require('helmet');
 
 const server = express();
 
-// const restricted = require('./middleware/restricted');
-
 const authRouter = require('./auth/auth-router');
 const usersRouter = require('./users/users-router');
 const potluckRouter = require('./potluck/potluck-router');
