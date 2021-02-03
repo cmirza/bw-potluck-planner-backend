@@ -29,7 +29,7 @@ router.post('/potluck', validateData, (req, res) => {
     const potluckInfo = req.body;
 
     Potlucks.addPotluck(potluckInfo)
-        .then(potluck => {
+        .then(() => {
             res.status(201).json({ potluckInfo, message: 'Potluck created successfully' });
         })
         .catch(error => {
