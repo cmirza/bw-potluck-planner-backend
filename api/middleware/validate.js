@@ -26,18 +26,10 @@ function validateData(req, res, next) {
 }
 
 function validateGuestData(req, res, next) {
-    if (req.body) {
-        if (req.body.user_id) {
-            next();
-        } else if (req.body.role) {
-            next();
-        } else if (req.body.guest_itesm) {
-            next();
-        } else {
-            res.status(400).json({ message: 'Required field missing' });
-        }
-    } else {
+    if (!req.body[0].user_id && !req.body[0].role && !req.body[0].guest_items) {
         res.status(400).json({ message: 'Missing post data' });
+    } else {
+        next();
     }
 }
 
