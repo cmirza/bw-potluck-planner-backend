@@ -26,12 +26,11 @@ router.get('/potluck/:id', validatePotluckId, async (req, res) => {
 });
 
 router.post('/potluck', validateData, (req, res) => {
-    const potluckId = req.params.id;
-    const potluckInfo = {...req.body, id: potluckId };
+    const potluckInfo = req.body;
 
     Potlucks.addPotluck(potluckInfo)
         .then(potluck => {
-            res.status(201).json({ potluck, message: 'Potluck created successfully' });
+            res.status(201).json({ potluckInfo, message: 'Potluck created successfully' });
         })
         .catch(error => {
             res.status(500).json({ errorMessage: error });

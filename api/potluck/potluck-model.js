@@ -17,10 +17,7 @@ function findPotluckById(id) {
 }
 
 async function addPotluck(potluck) {
-    await db('potluck').insert(potluck, 'id')
-        .then(id => {
-            return findPotluckById(id[0]);
-        });
+    return db('potluck').insert(potluck);
 }
 
 function updatePotluck(id, changes) {

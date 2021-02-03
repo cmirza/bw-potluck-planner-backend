@@ -17,20 +17,11 @@ function validatePotluckId(req, res, next) {
 }
 
 function validateData(req, res, next) {
-    if (req.body) {
-        if (req.body.name) {
-            next();
-        } else if (req.body.date) {
-            next();
-        } else if (req.body.time) {
-            next();
-        } else if (req.body.items) {
-            next();
-        } else {
-            res.status(400).json({ message: 'Required field missing' });
-        }
-    } else {
+    if (!req.body[0].name && !req.body[0].date && !req.body[0].time && !req.body[0].items) {
         res.status(400).json({ message: 'Missing post data' });
+    } else {
+        next();
+        
     }
 }
 
