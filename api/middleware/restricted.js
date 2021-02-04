@@ -1,25 +1,18 @@
 const jwt = require('jsonwebtoken');
 
+module.exports = (req, res, next) => {
+    const token = req.headers.authorization;
 
-function restricted() {
-    return async (req, res, next) => {
-        
-        try {
-            const token = req.headers.token
-
-            if(!token) {
-                return res.status(401).json({ message: 'Invalid credentials' });
-            }
-            jwt.verify(token, 'secret', (error, decoded) => {
-                if (error) {
-                    return res.status(401).json({ message: 'Invalid credentials' });
-                }
+    if (!token) {
+        res.status(401).json('Token required')
+    } else { 
+        jwt.verify(token, 'secret', (err, decoded) => {
+            if (err) {
+                res.status(401).json('Invalid token');
+            } else {
+                req.decodedJwt = decoded;
                 next();
-            })
-        } catch (error) {
-            next(error);
-        }
+            }
+        })
     }
 }
-
-module.exports = restricted;
