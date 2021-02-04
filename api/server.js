@@ -18,7 +18,7 @@ server.use(express.json());
 server.use('/', authRouter)
 server.use('/', usersRouter)
 server.use('/', potluckRouter)
-server.use('/', restrict, guestsRouter)
+server.use('/', guestsRouter)
 
 server.get('/', (req, res) => {
     res.status(200).json({ message: 'API Running...' });
