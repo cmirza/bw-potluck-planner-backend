@@ -1,5 +1,7 @@
 # bw-potluck-planner-backend
 
+Build week project for Track Team 19 at Lambda School. Potluck Planner is an app to organize potluck parties.
+
 |METHOD     |    PATH       | Description
 |---        | ---           | ---
 |POST	    |/register	    |register new user
