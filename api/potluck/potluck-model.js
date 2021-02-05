@@ -21,7 +21,7 @@ async function addPotluck(potluck) {
 }
 
 function updatePotluck(id, changes) {
-    return db('potluck').where({ id }).update(changes);
+    return db('potluck').where({ id }).update(changes[0]);
 }
 
 function deletePotluck(id) {
